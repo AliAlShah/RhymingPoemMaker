@@ -1,4 +1,7 @@
 import random
+import playsound
+import os
+from gtts import gTTS
 
 f = open("words.txt", "r")
 words = f.read()
@@ -10,7 +13,13 @@ def make_poem(start_word, suitable_words):
         print("Sorry we couldn't make a poem")
     else:
         suitable_words = " ".join(suitable_words)
-        print(f"{start_word} {suitable_words}")
+        text = f"{start_word} {suitable_words}"
+        print(text)
+        sound = gTTS(text=text, lang="en", slow=False)
+        sound.save("sound.mp3")
+        playsound.playsound("sound.mp3", True)
+        os.remove("sound.mp3")
+        
 
 while True:
     all_words = [word for word in words.split()]
