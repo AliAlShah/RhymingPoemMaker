@@ -6,8 +6,11 @@ f.close()
 
 def make_poem(start_word, suitable_words):
     suitable_words = random.choices(suitable_words, k=5)
-    suitable_words = " ".join(suitable_words)
-    print(f"{start_word} {suitable_words}")
+    if len(set(suitable_words)) < len(suitable_words):
+        print("Sorry we couldn't make a poem")
+    else:
+        suitable_words = " ".join(suitable_words)
+        print(f"{start_word} {suitable_words}")
 
 all_words = [word for word in words.split()]
 input_word = input("Enter a refrence word...   ")
